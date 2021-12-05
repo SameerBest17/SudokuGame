@@ -16,6 +16,7 @@ export default class Grid {
         cellNumber = 1;
         this.rows.push(currentRow);
       }
+      
       //Create unique cell name as given in apis
       let cellName = String.fromCharCode(charValue) + cellNumber;
 
