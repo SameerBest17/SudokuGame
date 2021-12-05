@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Sudoku from "./Components/index";
+import { React, useState, useEffect } from "react";
+import { getPuzzle } from "./services/puzzle";
 
 function App() {
+  const [data, setdata] = useState([]);
+  const [toggle,settoggle] = useState(0);
+  const [mode, setmode] = useState("");
+  
+  useEffect(() => {
+    
+    let mounted = true;
+    getPuzzle(mode).then((items) => {
+      if (mounted) {
+        setdata(items.puzzle);
+      }
+    });
+    return () => (mounted = false);
+  }, [toggle,mode]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Sudoku  dataset={data} mode={mode} setdata={setdata} setmode={setmode} toggle={toggle} settoggle={settoggle} />
     </div>
   );
 }
