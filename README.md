@@ -1,4 +1,4 @@
-# Simple Sudoku game Uaing Ractjs
+# Simple Sudoku game Using Ractjs
 
 # Todo
 
